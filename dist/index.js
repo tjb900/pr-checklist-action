@@ -1428,11 +1428,9 @@ const github_1 = __webpack_require__(438);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            core.info("got here 0");
             const token = core.getInput('github-token', { required: true });
             const github = github_1.getOctokit(token);
             const text = core.getInput('text', { required: true });
-            core.info("got here 1");
             yield github.issues.createComment({
                 issue_number: github_1.context.issue.number,
                 owner: github_1.context.repo.owner,
@@ -1443,7 +1441,7 @@ function run() {
             core.setOutput('result', "OK");
         }
         catch (error) {
-            core.setFailed(error.message);
+            core.setFailed("action failed: " + error.message);
         }
     });
 }
