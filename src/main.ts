@@ -8,6 +8,8 @@ async function run(): Promise<void> {
 
     const text: string = core.getInput('text', {required: true})
 
+    core.debug("got here 1")
+
     await github.issues.createComment({
       issue_number: context.issue.number,
       owner: context.repo.owner,
