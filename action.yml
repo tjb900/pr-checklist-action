@@ -1,11 +1,13 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'PR Checklist'
+description: 'Add a checklist to a PR'
+author: 'Tim Burgess'
 inputs:
-  milliseconds: # change this
+  github-token:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'token for github auth'
+  text:
+    required: true
+    description: 'text for comment'
 runs:
   using: 'node12'
   main: 'dist/index.js'
