@@ -8,6 +8,9 @@ inputs:
   text:
     required: true
     description: 'text for comment'
+outputs:
+  result:
+    description: 'nothing important'
 runs:
   using: 'node12'
   main: 'dist/index.js'

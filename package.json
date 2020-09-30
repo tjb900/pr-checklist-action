@@ -22,7 +22,7 @@
     "node",
     "setup"
   ],
-  "author": "",
+  "author": "Tim Burgess",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.5",
@@ -42,5 +42,12 @@
     "prettier": "2.1.1",
     "ts-jest": "^24.3.0",
     "typescript": "^4.0.2"
+  },
+  "bugs": {
+    "url": "https://github.com/dugeo/pr-checklist-action/issues"
+  },
+  "homepage": "https://github.com/dugeo/pr-checklist-action#readme",
+  "directories": {
+    "lib": "lib"
   }
 }
