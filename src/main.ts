@@ -1,16 +1,25 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import {context, getOctokit} from '@actions/github'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
+    core.info("got here 0")
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    const token: string = core.getInput('github-token', {required: true})
+    const github = getOctokit(token)
+    const text: string = core.getInput('text', {required: true})
 
-    core.setOutput('time', new Date().toTimeString())
+    core.info("got here 1")
+
+    await github.issues.createComment({
+      issue_number: context.issue.number,
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      body: text
+    })
+
+    core.debug("got here")
+    core.setOutput('result', "OK")
   } catch (error) {
     core.setFailed(error.message)
   }
