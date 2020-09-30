@@ -1,4 +1,4 @@
-module.exports =
+require('./sourcemap-register.js');module.exports =
 /******/ (function(modules, runtime) { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The module cache
@@ -1428,9 +1428,9 @@ const github_1 = __webpack_require__(438);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const token = core.getInput('github-token');
+            const token = core.getInput('github-token', { required: true });
             const github = github_1.getOctokit(token);
-            const text = core.getInput('text');
+            const text = core.getInput('text', { required: true });
             yield github.issues.createComment({
                 issue_number: github_1.context.issue.number,
                 owner: github_1.context.repo.owner,
@@ -5963,3 +5963,4 @@ function wrappy (fn, cb) {
 /***/ })
 
 /******/ });
+//# sourceMappingURL=index.js.map

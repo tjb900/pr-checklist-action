@@ -3,10 +3,10 @@ import {context, getOctokit} from '@actions/github'
 
 async function run(): Promise<void> {
   try {
-    const token: string = core.getInput('github-token')
+    const token: string = core.getInput('github-token', {required: true})
     const github = getOctokit(token)
 
-    const text: string = core.getInput('text')
+    const text: string = core.getInput('text', {required: true})
 
     await github.issues.createComment({
       issue_number: context.issue.number,
